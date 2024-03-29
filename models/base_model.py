@@ -19,7 +19,10 @@ class BaseModel:
 
     def save(self):
         """save the apdate"""
-        self.updated_at = datetime.datetime.now()
+        if not self.created_at:
+            pass
+        else:
+            self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
         """to_dict"""
@@ -28,3 +31,9 @@ class BaseModel:
         dictt["created_at"] = dictt["created_at"].isoformat()
         dictt["updated_at"] = dictt["updated_at"].isoformat()
         return dictt
+
+bm = BaseModel()
+bm.save()
+print(type(bm.updated_at))
+d_json = bm.to_dict()
+print(type(d_json['updated_at']))
