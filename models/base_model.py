@@ -1,16 +1,23 @@
 #!/usr/bin/python3
-"""for class BaseModel"""
-import datetime
-import uuid
+
+"""
+
+The module defines a BaseModel class that will be
+a template for other classes in a software system
+
+"""
+
+from uuid import uuid4
+from datetime import datetime
 
 
 class BaseModel:
     """defines all common attributes/methods for other classes"""
     def __init__(self):
         """init"""
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def __str__(self):
         """return this format: [<class name>] (<self.id>) <self.__dict__>"""
@@ -19,7 +26,7 @@ class BaseModel:
 
     def save(self):
         """save the apdate"""
-        self.updated_at = datetime.datetime.now()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """to_dict"""
