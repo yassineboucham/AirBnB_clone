@@ -25,7 +25,8 @@ class BaseModel:
             .format(BaseModel.__name__, self.id, self.__dict__)
 
     def save(self):
-        """save the apdate"""
+        """save the apdate
+        """
         self.updated_at = datetime.now()
 
     def to_dict(self):
