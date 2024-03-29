@@ -14,7 +14,8 @@ class BaseModel:
 
     def __str__(self):
         """return this format: [<class name>] (<self.id>) <self.__dict__>"""
-        return "[{}] ({}) {}".format(BaseModel.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}"\
+            .format(BaseModel.__name__, self.id, self.__dict__)
 
     def save(self):
         """save the apdate"""
