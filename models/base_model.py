@@ -17,6 +17,9 @@ class BaseModel:
             *args (any): Unused.
             **kwargs (dict): Key/value pairs of attributes.
         """
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
         if kwargs:
             dictadd = self.__dict__.copy()
             for key, value in kwargs.items():
@@ -24,10 +27,6 @@ class BaseModel:
                     dictadd[key] = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 else:
                     dictadd[key] = value
-        else:
-            self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
         models.storage.new(self)
 
     def save(self):
