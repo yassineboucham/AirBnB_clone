@@ -7,7 +7,7 @@ from datetime import datetime
 class BaseModel:
     """Represents the BaseModel of the HBnB project."""
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """Initialize a new BaseModel.
 
         Args:
@@ -17,6 +17,11 @@ class BaseModel:
         self.id = str(uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
+        if kwargs:
+            dictadd = self.__dict__.copy()
+            for key, value in kwargs.items():
+                dictadd[key] = value
+                self.save()
 
     def save(self):
         """Update updated_at with the current datetime."""
