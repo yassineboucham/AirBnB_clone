@@ -1,50 +1,43 @@
 #!/usr/bin/python3
-"""
-Defines the BaseModel class.
 
 """
+
+The module defines a BaseModel class that will be
+
+"""
+
 from uuid import uuid4
 from datetime import datetime
 
 
 class BaseModel:
-    """Represents the BaseModel of the HBnB project."""
-
+    """
+    The base class that other classes will inheret from
+    Args:
+        id: A string that is assigned a unique identifier
+        created_at: datetime of the created insetance
+        updated_at: datetime of the created insetance, it will be updated
+    """
     def __init__(self, *args, **kwargs):
-        """Initialize a new BaseModel.
-
-        Args:
-            *args (any): Unused.
-            **kwargs (dict): Key/value pairs of attributes.
-        """
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        if kwargs:
-            dictadd = self.__dict__.copy()
-            for key, value in kwargs.items():
-                if key == "created_at" or key == "updated_at":
-                    dictadd[key] = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                else:
-                    dictadd[key] = value
+        """Public instance attributes"""
+        if kwargs == {}:
+            self.id = str(uuid4())
+            self.created_at = datetime.today()
+            self.updated_at = datetime.today()
 
     def save(self):
-        """Update updated_at with the current datetime."""
-        self.updated_at = datetime.now()
+        """Update the updated time to the current"""
+        self.updated_at = datetime.today()
 
     def to_dict(self):
-        """Return the dictionary of the BaseModel instance.
-
-        Includes the key/value pair __class__ representing
-        the class name of the object.
-        """
-        rdict = self.__dict__.copy()
-        rdict["created_at"] = self.created_at.isoformat()
-        rdict["updated_at"] = self.updated_at.isoformat()
-        rdict["__class__"] = self.__class__.__name__
-        return rdict
+        """Return dictionary representaion of the object"""
+        dict_clone = {**self.__dict__}
+        dict_clone['created_at'] = dict_clone["created_at"].isoformat()
+        dict_clone['updated_at'] = dict_clone['updated_at'].isoformat()
+        dict_clone["__class__"] = type(self).__name__
+        return dict_clone
 
     def __str__(self):
-        """Return the print/str representation of the BaseModel instance."""
-        clname = self.__class__.__name__
-        return "[{}] ({}) {}".format(clname, self.id, self.__dict__)
+        """Friendly string representaion of object"""
+        str_format = (type(self).__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(*str_format)
