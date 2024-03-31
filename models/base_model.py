@@ -20,8 +20,10 @@ class BaseModel:
         if kwargs:
             dictadd = self.__dict__.copy()
             for key, value in kwargs.items():
-                dictadd[key] = value
-                self.save()
+                if key == "created_at" or key == "updated_at":
+                    dictadd[key] = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                else:
+                    dictadd[key] = value
 
     def save(self):
         """Update updated_at with the current datetime."""
