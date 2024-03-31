@@ -6,6 +6,7 @@ The module defines a BaseModel class that will be
 
 """
 
+import models
 from uuid import uuid4
 from datetime import datetime
 
@@ -25,9 +26,20 @@ class BaseModel:
             self.created_at = datetime.today()
             self.updated_at = datetime.today()
 
+        for key in kwargs.keys():
+            if key in ("created_at", "updated_at"):
+                dt = datetime.strptime(kwargs[key], "%Y-%m-%dT%H:%M:%S.%f")
+                setattr(self, key, dt)
+            elif key == "__class__":
+                continue
+            else:
+                setattr(self, key, kwargs[key])
+        models.storage.new(self)
+
     def save(self):
         """Update the updated time to the current"""
         self.updated_at = datetime.today()
+        models.storage.save()
 
     def to_dict(self):
         """Return dictionary representaion of the object"""
