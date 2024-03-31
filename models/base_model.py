@@ -18,8 +18,8 @@ class BaseModel:
             **kwargs (dict): Key/value pairs of attributes.
         """
         self.id = str(uuid4())
-        self.created_at = datetime.today()
-        self.updated_at = datetime.today()
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
         if kwargs:
             dictadd = self.__dict__.copy()
             for key, value in kwargs.items():
