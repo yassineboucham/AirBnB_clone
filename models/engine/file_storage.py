@@ -17,12 +17,12 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        self.__objects["<obj class name>.id"] = obj
+        self.__objects[self.id] = obj
 
     def save(self):
         with open(self.__file_path, "w") as jsonf:
             json.dump(self.__objects, jsonf)
 
     def reload(self):
-        with open(self.__file_path, "R") as jsonf:
+        with open(self.__file_path, "r") as jsonf:
             self.__objects = json.load(jsonf)
