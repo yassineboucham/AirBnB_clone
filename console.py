@@ -11,22 +11,17 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    def do_quit(self, line):
-        """Quit command to exit the program."""
-        return True
-
     def do_EOF(self, line):
-        """Inbuilt EOF command to gracefully catch errors."""
+        """Ctrl + D stops the console"""
         return True
 
-    def do_help(self, arg: str) -> bool | None:
-        """To get help on a command, type help <topic>."""
-        return super().do_help(arg)
+    def do_quit(self, line):
+        """quit command will exit the console"""
+        return True
 
     def emptyline(self):
-        """Override default `empty line + return` behaviour."""
-        pass
-
+        """Do nothing when getting an empty line"""
+        return
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
