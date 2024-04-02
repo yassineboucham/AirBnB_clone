@@ -17,7 +17,10 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        self.__objects[self.id] = obj
+        objs = FileStorage.__objects
+        class_name = obj.__class__.__name__
+        key = "{}.{}".format(class_name, obj.id)
+        objs[key] = obj
 
     def save(self):
         with open(self.__file_path, "w") as jsonf:
