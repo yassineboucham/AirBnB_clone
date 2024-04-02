@@ -10,11 +10,11 @@ deserializes JSON file to instances
 from models.base_model import BaseModel
 import json
 from models.user import User
-from models.city import City
-from models.state import State
-from models.amenity import Amenity
-from models.place import Place
-from models.review import Review
+from city import City
+from state import State
+from amenity import Amenity
+from place import Place
+from review import Review
 
 
 class FileStorage:
