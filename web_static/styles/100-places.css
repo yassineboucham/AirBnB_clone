@@ -64,15 +64,15 @@ h1 {
 }
 
 .bath-icone {
-    background: url("../images/icon_bath.png");
+    background: url("../image/icon_bath.png");
 }
 
 .room-icone {
-    background: url("../images/icon_bed.png")
+    background: url("../image/icon_bed.png")
 }
 
 .guest-icone {
-    background: url("../images/icon_group.png");
+    background: url("../image/icon_group.png");
 }
 
 .user {
@@ -106,15 +106,15 @@ h1 {
 }
 
 .pet-icon {
-    background-image: url("../images/icon_pets.png"); 
+    background-image: url("../image/icon_pets.png"); 
 } 
 
 .wifi-icon {
-    background-image: url("../images/icon_wifi.png"); 
+    background-image: url("../image/icon_wifi.png"); 
 } 
 
 .tv-icon {
-    background-image: url("../images/icon_tv.png"); 
+    background-image: url("../image/icon_tv.png"); 
 } 
 
 #amenities h2 {
