@@ -54,6 +54,15 @@ h4{
     position: absolute;
     left: -1px;
     top: 100%;
+    display: none;
+}
+
+.locations:hover .popover{
+    display: inline-block;
+}
+
+.amenities:hover .popover{
+    display: inline-block;
 }
 
 .popover ul{
